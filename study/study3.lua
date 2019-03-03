@@ -1,14 +1,15 @@
 -- spacetime
 -- norns study 3
 --
--- ENC 1 - sweep filter
--- ENC 2 - select edit position
--- ENC 3 - choose command
--- KEY 3 - randomize command set
+-- E1 sweep filter
+-- E2 select edit position
+-- E3 choose command
+-- K3 randomize command set
 --
--- spacetime is a weird function sequencer.
--- it plays a note on each step
--- each step is a symbol for the action.
+-- spacetime is a weird function
+-- sequencer. it plays a note on
+-- each step. each step is a
+-- symbol for the action.
 -- + = increase note
 -- - = decrease note
 -- < = go to bottom note
@@ -18,7 +19,8 @@
 -- m = slow metro
 -- # = jump random position
 --
--- augment/change this script with new functions!
+-- augment/change this script with
+-- new functions!
 
 engine.name = "PolyPerc"
 
@@ -44,7 +46,7 @@ label = {"+", "-", "<", ">", "*", "M", "m", "#"}
 function init()
   params:add_control("cutoff", "cutoff", controlspec.new(50, 5000, 'exp', 0, 555, 'hz'))
   params:set_action("cutoff", function(x) engine.cutoff(x) end)
-  counter = metro.alloc(count, 0.125, -1)
+  counter = metro.init(count, 0.125, -1)
   counter:start()
 end
 

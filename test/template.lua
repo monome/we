@@ -1,21 +1,12 @@
 -- TEMPLATE 1.0.0
 -- http://monome.org
 -- 
--- a code example showing the
+-- a code example showing some
 -- basic functions and how to
 -- use them.
 --
 -- see additional documentation
--- at...
---
--- ////////
--- ////
--- //////
--- /////////////
--- //
--- ///////
--- ///
--- /
+-- at monome.org/docs/norns/
 
 -- specify dsp engine to load:
 engine.name = 'TestSine'
@@ -28,7 +19,7 @@ local numbers = {0, 0, 0, 0, 0, 0, 0}
 local level = 5
 
 -- set up a metro
-local c = metro[1]
+local c = metro.init()
 -- count forever
 c.count = -1
 -- count interval to 1 second
@@ -36,7 +27,6 @@ c.time = 1
 -- callback function on each count
 c.event = function(stage)
   t = t + 1
-  norns.log.post("tick "..t)
   redraw()
 end
 
@@ -47,7 +37,7 @@ function init()
   -- show engine commands available
   engine.list_commands()
   -- set engine params
-  engine.hz(700)
+  engine.hz(200)
   -- start timer
   c:start()
 end
@@ -89,19 +79,6 @@ function redraw()
 
   -- refresh screen
   screen.update()
-end
-
--- grid key function
-function gridkey(x, y, state)
-  if state > 0 then
-    -- turn on led
-    g:led(x, y, level)
-  else
-    -- turn off led
-    g:led(x, y, 0)
-  end
-  -- refresh grid leds
-  g:refresh()
 end
 
 -- called on script quit, release memory
