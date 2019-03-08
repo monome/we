@@ -2,11 +2,11 @@
 --
 -- UI widgets demo.
 --
--- ENC1/KEY2 : Change page
--- KEY3 : Change tab
--- ENC2/3 : Adjust controls
+-- E1/K2 : Change page
+-- K3 : Change tab
+-- E2/3 : Adjust controls
 --
--- v1.0.0 Mark Eats
+-- v1.0.1 Mark Eats
 --
 
 
