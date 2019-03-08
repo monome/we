@@ -234,7 +234,7 @@ end
 
 
 function playfair_save()
-  local fd=io.open(data_dir .. "tehn/playfair.data","w+")
+  local fd=io.open(data_dir .. "ok/playfair.data","w+")
   io.output(fd)
   for i=1,112 do
     io.write(pattern[i].data .. "\n")
