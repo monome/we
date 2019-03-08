@@ -14,11 +14,11 @@
 
 
 -- Include the Graph classes
-local Graph = require "mark_eats/graph"
-local EnvGraph = require "mark_eats/envgraph"
-local FilterGraph = require "mark_eats/filtergraph"
+local Graph = require "graph"
+local EnvGraph = require "envgraph"
+local FilterGraph = require "filtergraph"
 
-local MusicUtil = require "mark_eats/musicutil"
+local MusicUtil = require "musicutil"
 
 -- This is where we will store the graph
 local demo_graph = nil
@@ -132,8 +132,8 @@ function init()
   init_graph(graph_id)
   
   -- Metro to call redraw()
-  screen_refresh_metro = metro.alloc()
-  screen_refresh_metro.callback = function()
+  screen_refresh_metro = metro.init()
+  screen_refresh_metro.event = function()
     if screen_dirty then
       screen_dirty = false
       redraw()
@@ -142,8 +142,8 @@ function init()
   screen_refresh_metro:start(1 / SCREEN_FRAMERATE)
   
   -- Metro for sequencer demo
-  step_metro = metro.alloc()
-  step_metro.callback = function()
+  step_metro = metro.init()
+  step_metro.event = function()
     if graph_id == 4 then
       step = step % 16 + 1
       screen_dirty = true
