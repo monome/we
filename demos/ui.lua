@@ -10,7 +10,7 @@
 --
 
 
-local UI = require "mark_eats/ui"
+local UI = require "ui"
 
 local SCREEN_FRAMERATE = 15
 local screen_refresh_metro
@@ -49,8 +49,8 @@ function init()
   scrolling_list = UI.ScrollingList.new(8, 8, 1, list_content)
   
   -- Start drawing to screen
-  screen_refresh_metro = metro.alloc()
-  screen_refresh_metro.callback = function()
+  screen_refresh_metro = metro.init()
+  screen_refresh_metro.event = function()
     if screen_dirty then
       screen_dirty = false
       redraw()

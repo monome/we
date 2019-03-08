@@ -10,7 +10,7 @@
 -- KEY3 : Reset step
 -- 
 
-local MusicUtil = require "mark_eats/musicutil"
+local MusicUtil = require "musicutil"
 
 local root_note = 48
 local scale_type = 1
@@ -61,8 +61,8 @@ function init()
   
   init_scale()
   
-  step_metro = metro.alloc()
-  step_metro.callback = advance_step
+  step_metro = metro.init()
+  step_metro.event = advance_step
   start_stop_metro()
   
   screen.aa(1)
