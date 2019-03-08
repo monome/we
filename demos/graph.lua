@@ -3,13 +3,13 @@
 -- Four types of graphs you
 -- can use in your own scripts.
 -- 
--- ENC2/3 : Adjust graph
--- KEY2 : Next demo
--- KEY3 : Shift
+-- E2/3 : Adjust graph
+-- K2 : Next demo
+-- K3 : Shift
 -- 
 -- No sounds, just graphs!
 --
--- v1.0.0 Mark Eats
+-- v1.0.1 Mark Eats
 --
 
 

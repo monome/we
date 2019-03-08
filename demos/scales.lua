@@ -3,11 +3,13 @@
 -- Example scale generation
 -- using MusicUtil.
 -- 
--- ENC1 : Tempo
--- ENC2 : Root note
--- ENC3 : Scale
--- KEY2 : Play/Pause
--- KEY3 : Reset step
+-- E1 : Tempo
+-- E2 : Root note
+-- E3 : Scale
+-- K2 : Play/Pause
+-- K3 : Reset step
+--
+-- v1.0.1 Mark Eats
 -- 
 
 local MusicUtil = require "musicutil"
