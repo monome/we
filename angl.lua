@@ -19,6 +19,8 @@ modes = {"speed", "pitch"}
 mode = 1
 hold = false
 
+REFRESH_RATE = 0.03
+
 
 key = function(n,z)
   if n==2 then hold = z==1 and true or false
@@ -65,7 +67,7 @@ arc_redraw = function()
 end
 
 re = metro.init()
-re.time = 0.025
+re.time = REFRESH_RATE
 re.event = function()
   arc_redraw()
 end
@@ -78,7 +80,7 @@ function init()
   -- polls
   for v = 1, VOICES do
     local phase_poll = poll.set('phase_' .. v, function(pos) positions[v] = pos end)
-    phase_poll.time = 0.025
+    phase_poll.time = REFRESH_RATE
     phase_poll:start()
   end
 
