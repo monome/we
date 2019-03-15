@@ -52,7 +52,7 @@ clk_midi = midi.connect()
 clk_midi.event = clk.process_midi
 
 engine.name = "Passersby"
-passersby = require "passersby"
+passersby = require "we/lib/passersby"
 
 -- this section is all maths + computational events
 

@@ -17,7 +17,7 @@ engine.name = 'Ack'
 
 local g = grid.connect()
 
-local ack = require 'ack'
+local ack = require 'we/lib/ack'
 local BeatClock = require 'beatclock'
 
 local clk = BeatClock.new()
@@ -234,7 +234,7 @@ end
 
 
 function playfair_save()
-  local fd=io.open(data_dir .. "ok/playfair.data","w+")
+  local fd=io.open(norns.state.data .. "playfair.data","w+")
   io.output(fd)
   for i=1,112 do
     io.write(pattern[i].data .. "\n")
@@ -247,7 +247,7 @@ function playfair_save()
 end
 
 function playfair_load()
-  local fd=io.open(data_dir .. "tehn/playfair.data","r")
+  local fd=io.open(norns.state.data .. "playfair.data","r")
   if fd then
     print("found datafile")
     io.input(fd)
