@@ -86,8 +86,7 @@ function init()
   end
   ack.add_effects_params()
 
-  params:read("playfair.pset")
-  params:bang()
+  params:default()
 
   playfair_load()
 

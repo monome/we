@@ -1,4 +1,5 @@
--- earthsea 1.1.0 - @tehn
+-- earthsea: pattern instrument
+-- 1.1.0 - @tehn
 -- llllllll.co/t/20366
 --
 -- subtractive polysynth
@@ -96,6 +97,10 @@ function init()
 
   params:add_control("cutRel", "cutRel", controlspec.new(0.01,10,"lin",0,1,""))
   params:set_action("cutRel", function(x) engine.cutRel(x) end)
+
+  params:add_separator()
+  params:add_option("enc2","enc2", {"shape","timbre","noise","cut"})
+  params:add_option("enc3","enc3", {"shape","timbre","noise","cut"}, 2)
 
 
   engine.level(0.05)
@@ -244,6 +249,10 @@ end
 function enc(n,delta)
   if n == 1 then
     mix:delta("output", delta)
+  elseif n == 2 then
+    params:delta(params:string("enc2"),delta*4)
+  elseif n == 3 then
+    params:delta(params:string("enc3"),delta*4)
   end
 end
 
