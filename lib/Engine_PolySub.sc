@@ -32,7 +32,7 @@ Engine_PolySub : CroneEngine {
 				width=0.5,// stereo width
 				hzLag = 0.1;
 
-				var osc1, osc2, snd, freq, del, aenv, fenv, deltime;
+				var osc1, osc2, snd, freq, del, aenv, fenv;
 
 				// TODO: could add control over these lag times if you wanna get crazy
 				detune = Lag.kr(detune);
@@ -57,7 +57,6 @@ Engine_PolySub : CroneEngine {
 					Env.adsr(ampAtk, ampDec, ampSus, ampRel, 1.0, ampCurve),
 					gate, doneAction:2);
 
-
 				fenv = EnvGen.ar(Env.adsr(cutAtk, cutDec, cutSus, cutRel), gate);
 
 				cut = SelectX.kr(cutEnvAmt, [cut, cut * fenv]);
@@ -70,8 +69,7 @@ Engine_PolySub : CroneEngine {
 			});
 
 			CroneDefs.add(polyDef);
-			
-			//// FIXME: probably a better way... ehh.
+
 			paramDefaults = Dictionary.with(
 				\level -> -12.dbamp,
 				\shape -> 0.0,
@@ -124,8 +122,7 @@ Engine_PolySub : CroneEngine {
 
 
 		// same as start, but don't map control busses, just copy their current values
-
-		this.addCommand(\solo, "i", { arg msg;
+		this.addCommand(\solo, "if", { arg msg;
 			this.addVoice(msg[1], msg[2], false);
 		});
 
@@ -152,20 +149,17 @@ Engine_PolySub : CroneEngine {
 	addVoice { arg id, hz, map=true;
 		var params = List.with(\out, context.out_b.index, \hz, hz);
 		var numVoices = voices.size;
-		//postln("num voices: " ++ numVoices);
 
 		if(voices[id].notNil, {
 			voices[id].set(\gate, 1);
 			voices[id].set(\hz, hz);
 		}, {
 			if(numVoices < maxNumVoices, {
-				// shouldn't need this
-				// this.removeVoice(id);
 				ctlBus.keys.do({ arg name;
 					params.add(name);
 					params.add(ctlBus[name].getSynchronous);
 				});
-				
+
 				voices.add(id -> Synth.new(\polySub, params, gr));
 				NodeWatcher.register(voices[id]);
 				voices[id].onFree({
@@ -182,9 +176,8 @@ Engine_PolySub : CroneEngine {
 	}
 
 	removeVoice { arg id;
-		if(true, { //voices[id].notNil, {
+		if(true, {
 			voices[id].set(\gate, 0);
-			//voices.removeAt(id);
 		});
 	}
 
