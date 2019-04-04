@@ -4,7 +4,7 @@
 -- K2 make low note
 -- K3 make high note
 
-a = include('lib/fourwaves')
+a = include('we/lib/fourwaves')
 
 m = metro.init()
 
