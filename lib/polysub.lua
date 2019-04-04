@@ -39,7 +39,7 @@ function polysub.params()
 
   -- amp
   params:add{type = "control", id = "level", name = "level",
-    controlspec = cs.new(0, 1, "lin", 0, 0.5, ""), action = engine.level}
+    controlspec = cs.new(0, 1, "lin", 0, 0.15, ""), action = engine.level}
   params:add{type = "control", id = "ampatk", name = "amp attack",
     controlspec = cs.new(0.01, 10, "lin", 0, 0.05, ""), action = engine.ampAtk}
   params:add{type = "control", id = "ampdec", name = "amp decay",
