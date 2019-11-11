@@ -10,6 +10,7 @@ Engine_KarplusRings : CroneEngine {
 	var lpf_gain = 1;
 	var bpf_freq = 2000;
 	var bpf_res = 0.3;
+	var pan = 0.0;
 
 		*new { arg context, doneCallback;
 		^super.new(context, doneCallback);
@@ -18,7 +19,7 @@ Engine_KarplusRings : CroneEngine {
 	alloc {
 		pg = ParGroup.tail(context.xg);
 
-		SynthDef("karplus_rings", {arg out, amp = amp, freq = freq, decay = decay, coef = coef, lpf_freq = lpf_freq, lpf_gain = lpf_gain, bpf_freq = bpf_freq, bpf_res = bpf_res;
+		SynthDef("karplus_rings", {arg out, amp = amp, freq = freq, decay = decay, coef = coef, lpf_freq = lpf_freq, lpf_gain = lpf_gain, bpf_freq = bpf_freq, bpf_res = bpf_res, pan = pan;
 			var env, snd;
 			env = EnvGen.kr(Env.linen(0, decay, 0), doneAction: 2);
 			snd = Pluck.ar(
@@ -29,7 +30,7 @@ Engine_KarplusRings : CroneEngine {
 				delaytime: freq.reciprocal,
 				decaytime: decay,
 				coef: coef);
-			Out.ar(out, Pan2.ar(MoogFF.ar(in: snd, freq: lpf_freq, gain: lpf_gain)));
+			Out.ar(out, Pan2.ar(MoogFF.ar(in: snd, freq: lpf_freq, gain: lpf_gain), pan));
 		}).play(args: [\out, context.out_b], target: pg);
 
 		this.addCommand("hz", "f", { arg msg;
