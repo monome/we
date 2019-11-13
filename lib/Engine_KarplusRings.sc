@@ -65,6 +65,10 @@ Engine_KarplusRings : CroneEngine {
 		this.addCommand("bpf_res", "f", { arg msg;
 			bpf_res = msg[1];
 		});
+
+		this.addCommand("pan", "f", { arg msg;
+			pan = msg[1];
+		});
 	}
 
 }
