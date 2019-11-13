@@ -38,7 +38,7 @@ function sc.init(file)
 
   for i=1,4 do
     softcut.level(i,1.0)
-    softcut.pan(i, 0.5)
+    softcut.pan(i, 0.0)
     softcut.buffer(i, 1)
     softcut.play(i, 1)
     softcut.rec(i, 0)
