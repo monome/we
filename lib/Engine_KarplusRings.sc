@@ -30,12 +30,12 @@ Engine_KarplusRings : CroneEngine {
 				delaytime: freq.reciprocal,
 				decaytime: decay,
 				coef: coef);
-			Out.ar(out, Pan2.ar(MoogFF.ar(in: snd, freq: lpf_freq, gain: lpf_gain), pan));
+			Out.ar(out, Pan2.ar(MoogFF.ar(in: snd, freq: lpf_freq, gain: lpf_gain), pos: pan));
 		}).play(args: [\out, context.out_b], target: pg);
 
 		this.addCommand("hz", "f", { arg msg;
 			var val = msg[1];
-            Synth("karplus_rings", [\out, context.out_b, \freq,val,\amp,amp,\decay,decay,\coef,coef,\lpf_freq,lpf_freq,\lpf_gain,lpf_gain,\bpf_freq,bpf_freq,\bpf_res,bpf_res], target:pg);
+            Synth("karplus_rings", [\out, context.out_b, \freq,val,\amp,amp,\decay,decay,\coef,coef,\lpf_freq,lpf_freq,\lpf_gain,lpf_gain,\bpf_freq,bpf_freq,\bpf_res,bpf_res,\pan,pan], target:pg);
 		});
 
 		this.addCommand("amp", "f", { arg msg;
