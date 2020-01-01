@@ -26,12 +26,12 @@ end
 local sc = {}
 
 function sc.init(file)
-  file = file or "audio/common/waves/01.wav"
+  file = file or _path.dust.."audio/common/waves/01.wav"
   local ch, dur, sr = audio.file_info(file)
   d = dur/sr
 
   print("fourwaves: loading "..file)
-  softcut.buffer_read_mono(_path.dust..file,0,1,d,0,0)
+  softcut.buffer_read_mono(file,0,1,d,0,0)
   print("fourwaves: dur "..d)
 
   audio.level_cut(1.0)
