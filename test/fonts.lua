@@ -1,5 +1,3 @@
-engine.name = 'ZSines'
-
 local font_face = 1
 local font_size = 6
 local num_fonts = 67
