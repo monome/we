@@ -32,7 +32,7 @@ end
 
 function enc(n, delta)
   if n == 1 then
-    mix:delta("output", delta)
+    params:delta("output_level", delta)
   elseif n == 2 then
     accum = (accum + delta) % 16
     edit = accum
